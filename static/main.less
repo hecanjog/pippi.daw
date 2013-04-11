@@ -8,44 +8,77 @@ html, body {
     padding: 0;
 }
 .container {
-    width: 100%;
-    margin: 0;
+    width: 1200px;
+    margin: 0 auto;
 }
 
-.timeline {
-    width: 100%;
-    overflow-y: scroll;
+#controls {
+    background-color: rgba(0,0,0, 0.2);
+    padding: 5px 10px;
+
+    button {
+        font-size: 18px;
+        padding: 5px 10px;
+    }
 }
 
+#timeline {
+    width: 100%;
+}
 .track {
     height: 50px;
     width: 100%;
     overflow: hidden;
     zoom: 1;
+    position: relative;
 
-    .block {
-        float: left;
-        height: 100%;
-        min-width: 1px;
+    background-image: -webkit-linear-gradient(0deg, rgba(0,0,0,0.1) 50%, transparent 50%, transparent);
+    background-size: 40px 40px;
+
+    &:nth-child(odd) {
+        background-color: #eee;
     }
 
+    &.ruler {
+        background-image: -webkit-linear-gradient(0deg, #333 50%, transparent 50%, transparent);
+        background-size: 40px 40px;
+    }
+
+
+    .block {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        min-width: 1px;
+        overflow: hidden;
+
+        p {
+            padding: 5px;
+            font-family: 'Verdana';
+            font-size: 12px;
+            text-align: center;
+        }
+    }
+
+    @blockfade: 60%;
+
     &:nth-child(4n+1) .block {
-        background-color: @blue;
+        background-color: fade(@blue, @blockfade);
         border: 1px solid darken(@blue, 5%);
     }
 
     &:nth-child(4n+2) .block {
-        background-color: @orange;
+        background-color: fade(@orange, @blockfade);
         border: 1px solid darken(@orange, 5%);
     }
 
     &:nth-child(4n+3) .block {
-        background-color: @red;
+        background-color: fade(@red, @blockfade);
         border: 1px solid darken(@red, 5%);
     }
 
     &:nth-child(4n+4) .block {
-        background-color: @yellow;
+        background-color: fade(@yellow, @blockfade);
         border: 1px solid darken(@yellow, 5%);
     }
 }

@@ -7,23 +7,30 @@
         <script> 
             less = { env: "development" }; 
         </script>
+
         <script src="/static/vendor/less.js/dist/less-1.3.3.min.js"></script>
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/main.js"></script>
     </head>
 
     <body>
         <div class="container">
+            <pre>
+            {{ data }}
+            {{ tracks }}
+            </pre>
+            <div id="controls">
+                <button id="regenerate-all">Regenerate All Blocks</button>
+                <button id="move-tool">&#9757;</button>
+            </div>
 
-            <div class="timeline">
+            <div id="timeline">
                 <div class="track ruler"></div>
-                {% for track in tracks %}
-                <div class="track">
-                    {% for block in track %}
-                    <div class="block" style="width: {{ block[3] }};">
-                        <p>{{ block[2] }}</p>
+                {% block tracks %}
+                    <div id="tracks">
+                        {% include "timeline.html" %}
                     </div>
-                    {% endfor %}
-                </div>
-                {% endfor %}
+                {% endblock %}
             </div>
 
         </div>

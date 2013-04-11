@@ -1,0 +1,9 @@
+{% for track in tracks %}
+    <div class="track">
+        {% for block in track %}
+        <div class="block" style="width: {{ block[3] }}px; left: {{ block[4] }}px">
+            <p>{{ block[0] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endfor %}
