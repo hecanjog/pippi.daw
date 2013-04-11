@@ -25,6 +25,8 @@ def ftpx(frames):
 def make_tracks(numtracks):
     tracks = range(numtracks)
 
+    g.db.execute('delete from `blocks`;')
+
     # Testing out display of rendered blocks
     for i, track in enumerate(tracks):
         blocks = range(dsp.randint(1, 5))
@@ -46,11 +48,9 @@ def make_tracks(numtracks):
             slength = "%02fs" % dsp.fts(length)
             offset = dsp.stf(dsp.rand(0, 60))
 
-            g.db.execute('delete from `blocks`;')
-            g.db.commit()
 
             # save in the db
-            block = [
+            block = ( 
                         0,
                         0,
                         i,
@@ -58,16 +58,17 @@ def make_tracks(numtracks):
                         length,
                         offset,
                         filename,
-                    ]
+                    )
             g.db.execute('insert into `blocks` (version, generator_id, track_id, length, range, offset, filename) values (?, ?, ?, ?, ?, ?, ?)', 
                     block)
-            g.db.commit()
 
             # block is a tuple:
             #   (block index, filename, length in pixels, offset in pixels)
             blocks[j] = (j, filename, slength, ftpx(length), ftpx(offset))
 
         tracks[i] = blocks
+
+    g.db.commit()
 
     return tracks
 
