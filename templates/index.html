@@ -3,6 +3,7 @@
     <head>
         <title>Pippi</title>
         <link rel="stylesheet/less" type="text/css" href="/static/main.less" />
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,700" />
 
         <script> 
             less = { env: "development" }; 
@@ -15,24 +16,28 @@
 
     <body>
         <div class="container">
-            <pre>
-            {{ data }}
-            {{ tracks }}
-            </pre>
-            <div id="controls">
-                <button id="regenerate-all">Regenerate All Blocks</button>
-                <button id="move-tool">&#9757;</button>
+            <div id="daw-wrapper">
+                <div id="controls">
+                    <button id="load-sound">Load Sound</button>
+                    <button id="regenerate-all">Regenerate All Blocks</button>
+                    <button id="move-tool">&#9757;</button>
+                </div>
+
+                <div id="timeline">
+                    <div class="track ruler"></div>
+                    {% block tracks %}
+                        <div id="tracks">
+                            {% include "timeline.html" %}
+                        </div>
+                    {% endblock %}
+                </div>
             </div>
 
-            <div id="timeline">
-                <div class="track ruler"></div>
-                {% block tracks %}
-                    <div id="tracks">
-                        {% include "timeline.html" %}
-                    </div>
-                {% endblock %}
+            <div id="info-sidebar">
+                <button>Load Generator</button>
             </div>
 
         </div>
+
     </body>
 </html>

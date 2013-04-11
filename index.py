@@ -62,9 +62,12 @@ def make_tracks(numtracks):
             g.db.execute('insert into `blocks` (version, generator_id, track_id, length, range, offset, filename) values (?, ?, ?, ?, ?, ?, ?)', 
                     block)
 
+            c = g.db.cursor()
+            block_id = c.lastrowid()
+
             # block is a tuple:
             #   (block index, filename, length in pixels, offset in pixels)
-            blocks[j] = (j, filename, slength, ftpx(length), ftpx(offset))
+            blocks[j] = (block_id, filename, slength, ftpx(length), ftpx(offset))
 
         tracks[i] = blocks
 
