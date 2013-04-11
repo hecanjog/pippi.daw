@@ -1,0 +1,6 @@
+static/vendor/*
+static/sounds/*
+*.pyc
+*.pyo
+*.swp
+*.swo

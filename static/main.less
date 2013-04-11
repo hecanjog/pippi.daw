@@ -1,0 +1,51 @@
+@blue: lighten(blue, 30%);
+@orange: lighten(orange, 30%);
+@red: lighten(red, 30%);
+@yellow: lighten(yellow, 30%);
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 100%;
+    margin: 0;
+}
+
+.timeline {
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.track {
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    zoom: 1;
+
+    .block {
+        float: left;
+        height: 100%;
+        min-width: 1px;
+    }
+
+    &:nth-child(4n+1) .block {
+        background-color: @blue;
+        border: 1px solid darken(@blue, 5%);
+    }
+
+    &:nth-child(4n+2) .block {
+        background-color: @orange;
+        border: 1px solid darken(@orange, 5%);
+    }
+
+    &:nth-child(4n+3) .block {
+        background-color: @red;
+        border: 1px solid darken(@red, 5%);
+    }
+
+    &:nth-child(4n+4) .block {
+        background-color: @yellow;
+        border: 1px solid darken(@yellow, 5%);
+    }
+}
