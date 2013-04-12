@@ -9,4 +9,6 @@ $(document).ready(function() {
             $('#tracks').html(data);
         });
     });
+
+    $(".block").draggable({ snap: ".track" });
 });

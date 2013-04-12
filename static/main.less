@@ -68,7 +68,8 @@ button {
     height: 50px;
     width: 100%;
     position: relative;
-    overflow: hidden;
+    /*z-index:1;*/
+    /*overflow: hidden;*/
 
     background-image: -webkit-linear-gradient(0deg, rgba(0,0,0,0.1) 50%, transparent 50%, transparent);
     background-size: 40px 40px;
@@ -89,7 +90,7 @@ button {
         height: 50px;
         min-width: 1px;
         overflow: hidden;
-        z-index: 100;
+        z-index: 9999;
 
         p {
             display: none;
